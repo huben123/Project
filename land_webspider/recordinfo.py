@@ -132,7 +132,7 @@ u"合同签定日期":"mainModuleContainer_1855_1856_ctl00_ctl00_p1_f1_r14_c4_ct
 }
 
 
-
+wait_file_date=[]
 savefile=[]
 savefile_date=[]
 read_file_list=[]
@@ -157,14 +157,15 @@ else:
 	date_start=datetime.strptime( date_start, '%Y-%m-%d')
 	date_end=datetime.strptime( date_end, '%Y-%m-%d')
 
+    # normal running     
+    for element in savefile_date:
+        if element >=date_start and element <= date_end: 
+            wait_file_date.append(element)
 
 
 
-# normal running 
-wait_file_date=[]
-for element in savefile_date:
-    if element >=date_start and element <= date_end: 
-        wait_file_date.append(element)
+
+
 
 # error recovering 
 error_dict={}
