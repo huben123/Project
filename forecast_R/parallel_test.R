@@ -98,6 +98,7 @@ name_1=c("import_yoy","real_est_invsmt_yoy.1")
 result_list=list()
 
 parallel_func=function(var_name2,var_name1=name_1,dependent=dependent,independent=independent,result_list=result_list){
+parallel_func=function(var_name2,var_name1,dependent,independent,prior_set,backtest){
   ## initialization 
   temp_result=list()
   
@@ -107,6 +108,7 @@ parallel_func=function(var_name2,var_name1=name_1,dependent=dependent,independen
   name_list=c(var_name2,var_name1)
   
   bvar_vectors=cbind(dependent,independent[,name_list])
+  prior=c(prior_set,prior_set,prior_set,prior_set,prior_set,prior_set)
   backtest = 12
   prior_set=0.9
   prior=rep(prior_set,times=5)
@@ -121,8 +123,8 @@ parallel_func=function(var_name2,var_name1=name_1,dependent=dependent,independen
   
   ## saving result
   temp_result[[1]]=temp_rmse
-  temp_result[[2]]=prior_set
-  temp_result[[3]]=var_name2
+  temp_result[[2]]=bvar_vectors
+  temp_result[[3]]=prior_set
   
   
   #result_list[[length(result_list)+1]] <<- temp_result ## assign to gobal variable <<-
