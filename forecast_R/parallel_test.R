@@ -97,7 +97,6 @@ name_1=c("import_yoy","real_est_invsmt_yoy.1")
 
 result_list=list()
 
-parallel_func=function(var_name2,var_name1=name_1,dependent=dependent,independent=independent,result_list=result_list){
 parallel_func=function(var_name2,var_name1,dependent,independent,prior_set,backtest){
   ## initialization 
   temp_result=list()
